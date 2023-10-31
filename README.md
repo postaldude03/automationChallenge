@@ -5,7 +5,8 @@ For running the Playwright test, make sure to have the following prerequisites i
 1. **Node.js and npm**: you can download and install Node.js from https://nodejs.org/.
 2. **Playwright**: you can install Playwright as a development dependency in your project by running the following command in your project's directory:       
    ```    npm install playwright    ```
-## Running the testsTo run the tests, follow these steps:
+## Running the tests
+To run the tests, follow these steps:
 1. **Clone the Repository**:
     1. Navigate to your project's directory   
        ```   cd /path/to/your/project   ```
