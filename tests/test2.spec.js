@@ -1,5 +1,5 @@
 const { chromium } = require('playwright');
-const {test} = require("playwright/test");
+const {test, expect} = require("playwright/test");
 
 test('Test2',async () => {
     // launching the Chromium browser, creating a new context in the browser, opening a new page in the created context
@@ -22,10 +22,7 @@ test('Test2',async () => {
     console.log('Checking if user was redirected to the correct page.');
     const expectedURL = 'https://www.sapfioneer.com/finance-esg/financial-control/';
     const currentURL = page.url();
-    if (currentURL === expectedURL) {
-        console.log('Passed! The user is on the correct page.');
-    } else {
-        throw new Error(`Failed! The redirection was not correct: expected URL '${expectedURL}', actual URL '${currentURL}'.`);
-    }
+    expect(currentURL === expectedURL,`Failed! The redirection was not correct: expected URL '${expectedURL}', actual URL '${currentURL}'.`).toBe(true);
+    console.log('Passed! The user is on the correct page.');
     await browser.close();
 });

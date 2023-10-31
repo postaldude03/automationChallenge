@@ -16,7 +16,9 @@ For running the Playwright test, make sure to have the following prerequisites i
    ```    npm install     ```
 3. **Run the tests**: run the tests using the following commands in the terminal:
  
-   ```    npx playwright test --reporter=html   ```
+   ```    npx playwright test --reporter=html   ``` - will run each all tests
+   
+   ```    npx playwright test <test_name> --reporter=html   ``` - will run the specified test
 4. **Review the results**: if any of the tests are failed - the html report will be automatically opened. To view the latest report run the following command:
    
     ```npx playwright show-report```

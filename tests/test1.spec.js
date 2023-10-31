@@ -1,5 +1,5 @@
 const { chromium } = require('playwright');
-const {test} = require("playwright/test");
+const {test, expect} = require("playwright/test");
 
 
 test('Test1',async () => {
@@ -17,12 +17,7 @@ test('Test1',async () => {
     const bookmarks = ['Banking', 'Insurance', 'Finance & ESG', 'Services', 'Partners', 'Company', 'Resources'];
     for (const bookmarkName of bookmarks) {
         // selecting the element by classname and text to make sure that correct element is verified
-        const isBookmarkVisible = await page.isVisible(`//a[@class='nav-top-link' and text()='${bookmarkName}']`);
-        if (isBookmarkVisible) {
-            console.log(`Bookmark '${bookmarkName}' is visible.`);
-        } else {
-            throw new Error(`Failed! Bookmark '${bookmarkName}' is not visible.`);
-        }
+        expect(await page.isVisible(`//a[@class='nav-top-link' and text()='${bookmarkName}']`),`Failed! Bookmark '${bookmarkName}' is not visible.`).toBe(true);
     }
     console.log('Passed! All bookmarks from the list are visible.');
     await browser.close();
