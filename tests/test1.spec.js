@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
 const {test} = require("playwright/test");
 
+
 test('Test1',async () => {
     // launching the Chromium browser, creating a new context in the browser, opening a new page in the created context
     const browser = await chromium.launch();
@@ -20,8 +21,7 @@ test('Test1',async () => {
         if (isBookmarkVisible) {
             console.log(`Bookmark '${bookmarkName}' is visible.`);
         } else {
-            console.log(`Failed! Bookmark '${bookmarkName}' is not visible.`);
-            process.exit(1);
+            throw new Error(`Failed! Bookmark '${bookmarkName}' is not visible.`);
         }
     }
     console.log('Passed! All bookmarks from the list are visible.');

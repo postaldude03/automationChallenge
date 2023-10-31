@@ -25,7 +25,7 @@ test('Test2',async () => {
     if (currentURL === expectedURL) {
         console.log('Passed! The user is on the correct page.');
     } else {
-        console.log(`Failed! The redirection was not correct: expected URL '${expectedURL}', actual URL '${currentURL}'.`);
+        throw new Error(`Failed! The redirection was not correct: expected URL '${expectedURL}', actual URL '${currentURL}'.`);
     }
     await browser.close();
 });

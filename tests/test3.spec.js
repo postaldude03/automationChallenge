@@ -33,30 +33,28 @@ test('Test3',async () => {
     // Step 4: verify the validation error messages
     try {
         console.log('Verifying the validation error messages:');
-        await iframeContent.waitForSelector('//input[@name="firstname"]/following::label[text()="Please complete this required field."]')
+        await iframeContent.waitForSelector('//input[@name="firstname"]/following::label[text()="Please complete this required field."]', {timeout : 3000})
         console.log('The correct error is displayed for the mandatory field "First name".');
 
-        await iframeContent.waitForSelector('//input[@name="lastname"]/following::label[text()="Please complete this required field."]')
+        await iframeContent.waitForSelector('//input[@name="lastname"]/following::label[text()="Please complete this required field."]', {timeout : 3000})
         console.log('The correct error is displayed for the mandatory field "Last name".');
 
-        await iframeContent.waitForSelector('//input[@name="email"]/following::label[text()="Please complete this required field."]')
+        await iframeContent.waitForSelector('//input[@name="email"]/following::label[text()="Please complete this required field."]', {timeout : 3000})
         console.log('The correct error is displayed for the mandatory field "Work email".');
 
-        await iframeContent.waitForSelector('//select[@name="country__new_"]/following::label[text()="Please select an option from the dropdown menu."]')
+        await iframeContent.waitForSelector('//select[@name="country__new_"]/following::label[text()="Please select an option from the dropdown menu."]', {timeout : 3000})
         console.log('The correct error is displayed for the mandatory choice "Country".');
 
-        await iframeContent.waitForSelector('//textarea[@name="how_can_we_help_you_"]/following::label[text()="Please complete this required field."]')
+        await iframeContent.waitForSelector('//textarea[@name="how_can_we_help_you_"]/following::label[text()="Please complete this required field."]', {timeout : 3000})
         console.log('The correct error is displayed for the mandatory field "How can we help you?".');
 
-        await iframeContent.waitForSelector('//input[@name="LEGAL_CONSENT.processing"]/following::label[text()="Please complete this required field."]')
+        await iframeContent.waitForSelector('//input[@name="LEGAL_CONSENT.processing"]/following::label[text()="Please complete this required field."]', {timeout : 3000})
         console.log('The correct error is displayed for the mandatory checkbox.');
 
-        await iframeContent.waitForSelector('//label[text()="Please complete all required fields."]')
+        await iframeContent.waitForSelector('//label[text()="Please complete all required fields."]', {timeout : 3000})
         console.log('The correct error is displayed if not all mandatory fields are filled-in.');
-
     } catch (error) {
-        console.log('Failed! Expected error was not found - see the report.');
-        process.exit(1)
+        throw new Error('Failed! The expected error was not found - see the report.');
     }
     console.log('Passed! All validation error messages are displayed.');
     await browser.close();
