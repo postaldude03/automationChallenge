@@ -17,12 +17,9 @@ test('Test3',async () => {
     console.log('Checking if user was redirected to the correct page.');
     const expectedURL = 'https://www.sapfioneer.com/contact/';
     const currentURL = page.url();
-    if (currentURL === expectedURL) {
-        console.log('User is on the correct page.');
-    } else {
-        console.log(`Failed! The redirection was not correct: expected URL "${expectedURL}", actual URL "${currentURL}".`);
-        process.exit(1);
-    }
+    expect(currentURL === expectedURL,`Failed! The redirection was not correct: expected URL '${expectedURL}', actual URL '${currentURL}'.`).toBe(true);
+    console.log('User is on the correct page.');
+
     // Step 3: click the "Submit" button on an empty contact form
     // selecting the iframe and clicking on the button
     const iframe = await page.waitForSelector('iframe');
