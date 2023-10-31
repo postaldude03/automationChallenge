@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
+const {test} = require("playwright/test");
 
-(async () => {
+test('Test1',async () => {
     // launching the Chromium browser, creating a new context in the browser, opening a new page in the created context
     const browser = await chromium.launch();
     const context = await browser.newContext();
@@ -25,4 +26,4 @@ const { chromium } = require('playwright');
     }
     console.log('Passed! All bookmarks from the list are visible.');
     await browser.close();
-})();
+});

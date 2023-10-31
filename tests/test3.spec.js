@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
+const {test} = require("playwright/test");
 
-(async () => {
+test('Test3',async () => {
     // launching the Chromium browser, creating a new context in the browser, opening a new page in the created context
     const browser = await chromium.launch();
     const context = await browser.newContext();
@@ -59,4 +60,4 @@ const { chromium } = require('playwright');
     }
     console.log('Passed! All validation error messages are displayed.');
     await browser.close();
-})();
+});

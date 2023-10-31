@@ -1,6 +1,7 @@
 const { chromium } = require('playwright');
+const {test} = require("playwright/test");
 
-(async () => {
+test('Test2',async () => {
     // launching the Chromium browser, creating a new context in the browser, opening a new page in the created context
     const browser = await chromium.launch();
     const context = await browser.newContext();
@@ -27,4 +28,4 @@ const { chromium } = require('playwright');
         console.log(`Failed! The redirection was not correct: expected URL '${expectedURL}', actual URL '${currentURL}'.`);
     }
     await browser.close();
-})();
+});
