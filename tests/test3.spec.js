@@ -13,19 +13,20 @@ const elements = [
 ];
 
 test('Test3', async () => {
+    // Step 1: setting up the context and navigating to the main page
     const {page, browser} = await testSetup();
-    // Step 1: Click on 'Get in touch'
+    // Step 2: Click on 'Get in touch'
     await page.click('//span[text()="Get in touch"]');
     await page.waitForLoadState('load');
-    // Step 2: verify the redirection
-    await expect(page, `Failed! User is not on the correct page`).toHaveURL('https://www.sapfioneer.com/contact/');
-    // Step 3: click the "Submit" button on an empty contact form
+    // Step 3: verify the redirection
+    await expect(page, `User is not on the correct page`).toHaveURL('https://www.sapfioneer.com/contact/');
+    // Step 4: click the "Submit" button on an empty contact form
     const iframe = await page.waitForSelector('iframe');
     const iframeContent = await iframe.contentFrame();
     await iframeContent.click('//input[@value="Submit"]');
-    // Step 4: verify the validation error messages
+    // Step 5: verify the validation error messages
     for (const element of elements) {
-        await expect.soft(iframeContent.locator(`${element}`), 'Failed! The expected error was not found - see the report.').toBeVisible();
+        await expect.soft(iframeContent.locator(`${element}`), 'The expected error was not found - see the report.').toBeVisible();
     }
     expect(test.info().errors).toHaveLength(0);  // failing the test if at least one of the soft checks is not ok
     await browser.close();
