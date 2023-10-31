@@ -15,9 +15,12 @@ test('Test1',async () => {
     // Step 2: verifying if the bookmarks from the list are visible
     const bookmarks = ['Banking', 'Insurance', 'Finance & ESG', 'Services', 'Partners', 'Company', 'Resources'];
     for (const bookmarkName of bookmarks) {
+        //performing a soft-check on each element
         // selecting the element by classname and text to make sure that correct element is verified
-        await expect(page.locator(`//a[@class='nav-top-link' and text()='${bookmarkName}']`),`Failed! Bookmark '${bookmarkName}' is not visible.`).toBeVisible();
+        await expect.soft(page.locator(`//a[@class='nav-top-link' and text()='${bookmarkName}']`),`Failed! Bookmark '${bookmarkName}' is not visible.`).toBeVisible();
     }
+    // failing the test if at least one of the soft checks is not ok
+    expect(test.info().errors).toHaveLength(0);
     console.log('Passed! All bookmarks from the list are visible.');
     await browser.close();
 });

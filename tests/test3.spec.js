@@ -39,9 +39,10 @@ test('Test3',async () => {
     // Step 4: verify the validation error messages
     console.log('Verifying the validation error messages:');
     for (const element of elements) {
-        await expect(iframeContent.locator(`${element}`), 'Failed! The expected error was not found - see the report.').toBeVisible();
+        await expect.soft(iframeContent.locator(`${element}`), 'Failed! The expected error was not found - see the report.').toBeVisible();
         }
-
+    // failing the test if at least one of the soft checks is not ok
+    expect(test.info().errors).toHaveLength(0);
     console.log('Passed! All validation error messages are displayed.');
     await browser.close();
 });
