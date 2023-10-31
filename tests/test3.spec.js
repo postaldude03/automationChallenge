@@ -28,19 +28,20 @@ test('Test3',async () => {
     console.log('The empty contact form was submitted.');
 
     const elements = [
-        `//input[@name='firstname']/following::label[text()='Please complete this required field.']`,
-        `//input[@name='lastname']/following::label[text()='Please complete this required field.']`,
-        `//input[@name="email"]/following::label[text()="Please complete this required field."]`,
-        `//select[@name="country__new_"]/following::label[text()="Please select an option from the dropdown menu."]`,
-        `//textarea[@name="how_can_we_help_you_"]/following::label[text()="Please complete this required field."]`,
-        `//input[@name="LEGAL_CONSENT.processing"]/following::label[text()="Please complete this required field."]`,
-        `//label[text()="Please complete all required fields."]`,
+        `//input[@name="firstname"]/following::label[text()="Please complete this required field."][1]`,
+        `//input[@name="lastname"]/following::label[text()="Please complete this required field."][1]`,
+        `//input[@name="email"]/following::label[text()="Please complete this required field."][1]`,
+        `//select[@name="country__new_"]/following::label[text()="Please select an option from the dropdown menu."][1]`,
+        `//textarea[@name="how_can_we_help_you_"]/following::label[text()="Please complete this required field."][1]`,
+        `//input[@name="LEGAL_CONSENT.processing"]/following::label[text()="Please complete this required field."][1]`,
+        `//label[text()="Please complete all required fields."][1]`,
     ];
     // Step 4: verify the validation error messages
     console.log('Verifying the validation error messages:');
     for (const element of elements) {
-        expect(await iframeContent.isVisible(`${element}`),'Failed! The expected error was not found - see the report.').toBe(true);
+        await expect(iframeContent.locator(`${element}`), 'Failed! The expected error was not found - see the report.').toBeVisible();
         }
+
     console.log('Passed! All validation error messages are displayed.');
     await browser.close();
 });

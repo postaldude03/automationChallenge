@@ -16,7 +16,7 @@ test('Test1',async () => {
     const bookmarks = ['Banking', 'Insurance', 'Finance & ESG', 'Services', 'Partners', 'Company', 'Resources'];
     for (const bookmarkName of bookmarks) {
         // selecting the element by classname and text to make sure that correct element is verified
-        expect(await page.isVisible(`//a[@class='nav-top-link' and text()='${bookmarkName}']`),`Failed! Bookmark '${bookmarkName}' is not visible.`).toBe(true);
+        await expect(page.locator(`//a[@class='nav-top-link' and text()='${bookmarkName}']`),`Failed! Bookmark '${bookmarkName}' is not visible.`).toBeVisible();
     }
     console.log('Passed! All bookmarks from the list are visible.');
     await browser.close();
