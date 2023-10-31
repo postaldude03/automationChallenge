@@ -20,9 +20,7 @@ test('Test2',async () => {
 
     // Step 3: verify the redirection
     console.log('Checking if user was redirected to the correct page.');
-    const expectedURL = 'https://www.sapfioneer.com/finance-esg/financial-control/';
-    const currentURL = page.url();
-    expect(currentURL === expectedURL,`Failed! The redirection was not correct: expected URL '${expectedURL}', actual URL '${currentURL}'.`).toBe(true);
+    await expect(page,`Failed! User is not on the correct page`).toHaveURL('https://www.sapfioneer.com/finance-esg/financial-control/');
     console.log('Passed! The user is on the correct page.');
     await browser.close();
 });

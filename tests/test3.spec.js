@@ -15,9 +15,7 @@ test('Test3',async () => {
 
     // Step 2: verify the redirection
     console.log('Checking if user was redirected to the correct page.');
-    const expectedURL = 'https://www.sapfioneer.com/contact/';
-    const currentURL = page.url();
-    expect(currentURL === expectedURL,`Failed! The redirection was not correct: expected URL '${expectedURL}', actual URL '${currentURL}'.`).toBe(true);
+    await expect(page,`Failed! User is not on the correct page`).toHaveURL('https://www.sapfioneer.com/contact/');
     console.log('User is on the correct page.');
 
     // Step 3: click the "Submit" button on an empty contact form
