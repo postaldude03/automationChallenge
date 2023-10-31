@@ -37,7 +37,7 @@ test('Test3',async () => {
         `//select[@name="country__new_"]/following::label[text()="Please select an option from the dropdown menu."]`,
         `//textarea[@name="how_can_we_help_you_"]/following::label[text()="Please complete this required field."]`,
         `//input[@name="LEGAL_CONSENT.processing"]/following::label[text()="Please complete this required field."]`,
-        `//label[text()="Please complete all required ."]`,
+        `//label[text()="Please complete all required fields."]`,
     ];
     // Step 4: verify the validation error messages
     console.log('Verifying the validation error messages:');
