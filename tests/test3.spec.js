@@ -25,6 +25,8 @@ test('Test3',async () => {
     await iframeContent.click('//input[@value="Submit"]');
     console.log('The empty contact form was submitted.');
 
+    // Step 4: verify the validation error messages
+    // the list of elements to check
     const elements = [
         `//input[@name="firstname"]/following::label[text()="Please complete this required field."][1]`,
         `//input[@name="lastname"]/following::label[text()="Please complete this required field."][1]`,
@@ -34,7 +36,6 @@ test('Test3',async () => {
         `//input[@name="LEGAL_CONSENT.processing"]/following::label[text()="Please complete this required field."][1]`,
         `//label[text()="Please complete all required fields."][1]`,
     ];
-    // Step 4: verify the validation error messages
     console.log('Verifying the validation error messages:');
     for (const element of elements) {
         await expect.soft(iframeContent.locator(`${element}`), 'Failed! The expected error was not found - see the report.').toBeVisible();
