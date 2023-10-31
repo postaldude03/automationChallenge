@@ -1,5 +1,5 @@
-const { chromium } = require('playwright');
-const {test, expect} = require("playwright/test");
+import {chromium} from "playwright";
+import {test, expect} from "playwright/test";
 
 test('Test3',async () => {
     // launching the Chromium browser, creating a new context in the browser, opening a new page in the created context
